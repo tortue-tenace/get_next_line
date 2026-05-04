@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thattal <thattal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tattal <tattal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 14:36:37 by thattal           #+#    #+#             */
-/*   Updated: 2026/05/04 15:50:24 by thattal          ###   ########.fr       */
+/*   Updated: 2026/05/04 17:50:44 by tattal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gnl.h"
 
-size_t	ft_strlen(char	*s)
+size_t	ft_strlen(char *s)
 {
 	size_t	i;
 
+	if (!s)
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
@@ -25,17 +27,18 @@ size_t	ft_strlen(char	*s)
 char	*ft_strjoin(char **output, char *s1, char *s2)
 {
 	char	*nstr;
-	int		i;
 
-	i = 0;
 	if (!s2)
 		return (s1);
-	nstr = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	nstr = malloc(sizeof (char) * (ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!nstr)
+		return (NULL);
 	ft_memset(nstr, 0, ft_strlen(s1) + ft_strlen(s2) + 1);
 	ft_memmove(nstr, s1, ft_strlen(s1));
 	ft_memmove(nstr + ft_strlen(s1), s2, ft_strlen(s2));
 	free(s1);
 	*output = nstr;
+	return (nstr);
 }
 
 char	*ft_strchr(char *string, char find)
@@ -54,7 +57,30 @@ char	*ft_strchr(char *string, char find)
 
 int	ft_split_line(char **line, char **keep)
 {
-	
+	char	*temp;
+	int		len;
+
+	if (!*keep || !**keep)
+		return (*line = NULL, 0);
+	len = 0;
+	while ((*keep)[len] && (*keep)[len] != '\n')
+		len++;
+	len += ((*keep)[len] == '\n');
+	*line = malloc(len + 1);
+	if (!*line)
+		return (0);
+	ft_memmove(*line, *keep, len);
+	(*line)[len] = '\0';
+	temp = NULL;
+	if ((*keep)[len])
+	{
+		temp = malloc(ft_strlen(*keep + len) + 1);
+		if (temp)
+			ft_memmove(temp, *keep + len, ft_strlen(*keep + len) + 1);
+	}
+	free(*keep);
+	*keep = temp;
+	return (1);
 }
 
 char	*get_next_line(int fd)
@@ -68,10 +94,10 @@ char	*get_next_line(int fd)
 	{
 		return_val = read(fd, buffer, BUFFER_SIZE);
 		if (return_val <= 0)
-			break;
+			break ;
 		buffer[return_val] = '\0';
 		ft_strjoin(&keep, keep, buffer);
-    }
-	ft_split_line(&line, &keep); 
+	}
+	ft_split_line(&line, &keep);
 	return (line);
 }
