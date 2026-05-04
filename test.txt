@@ -1,0 +1,4 @@
+Ceci est la ligne 1.
+Et voici la ligne 2 avec un peu plus de texte.
+La ligne 3 est très, très, très longue pour tester si BUFFER_SIZE 42 fonctionne bien même sur des lignes qui font plus de 100 caractères.
+Fin !
