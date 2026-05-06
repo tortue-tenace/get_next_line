@@ -1,7 +1,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "gnl/gnl.h"
+#include "get_next_line.h"
 
 // Déclaration de la fonction get_next_line (au cas où elle n'est pas dans le header exact avec ce prototype)
 char *get_next_line(int fd);
