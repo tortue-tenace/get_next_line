@@ -117,7 +117,6 @@ Documentation et références utilisées :
 
 - `man 2 read`, `man 3 malloc`, `man 3 free` — pages de manuel des fonctions autorisées.
 - 42 Norm — règles de style obligatoires pour les projets en C.
-- Brian W. Kernighan & Dennis M. Ritchie, *The C Programming Language* — pour les bases du C et la notion de variable statique.
 - Cours et discussions avec mes pairs au cluster sur la gestion mémoire et les descripteurs de fichiers.
 
 ### Utilisation de l'IA
@@ -130,4 +129,4 @@ Elle a été utilisée uniquement comme outil d'appoint, en dehors de la product
 - Discuter de l'intérêt et des limites des variables statiques en C, sans demander d'implémentation.
 - Relire et structurer ce README.
 
-Aucune partie du code de `get_next_line.c` ou `get_next_line_utils.c` n'a été générée par une IA : l'algorithme, la structure du code et la gestion mémoire ont été conçus et écrits à la main, dans l'esprit de la pédagogie 42.
+Aucune partie du code de `get_next_line.c` ou `get_next_line_utils.c` n'a été générée par une IA : l'algorithme, la structure du code et la gestion mémoire ont été conçus et écrits à la main.
