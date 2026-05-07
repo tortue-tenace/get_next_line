@@ -86,10 +86,13 @@ int	ft_split_line(char **line, char **keep)
 char	*get_next_line(int fd)
 {
 	static char	*keep = NULL;
-	char		buffer[BUFFER_SIZE + 1];
+	char		*buffer;
 	char		*line;
 	int			return_val;
 
+	buffer = malloc(BUFFER_SIZE + 1);
+	if (!buffer)
+		return (NULL);
 	while (ft_strchr(keep, '\n') == NULL)
 	{
 		return_val = read(fd, buffer, BUFFER_SIZE);
@@ -98,6 +101,7 @@ char	*get_next_line(int fd)
 		buffer[return_val] = '\0';
 		ft_strjoin(&keep, keep, buffer);
 	}
+	free(buffer);
 	ft_split_line(&line, &keep);
 	return (line);
 }

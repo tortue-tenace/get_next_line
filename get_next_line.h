@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thattal <thattal@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tattal <tattal@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:05:17 by thattal           #+#    #+#             */
-/*   Updated: 2026/05/06 14:08:46 by thattal          ###   ########.fr       */
+/*   Updated: 2026/05/07 14:10:18 by tattal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t len);
+char	*get_next_line(int fd);
 
 #endif
